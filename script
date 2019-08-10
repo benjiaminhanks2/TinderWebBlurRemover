@@ -1,0 +1,15 @@
+const targetNode = document;
+const config = { attributes: true, childList: true, subtree: true };
+const callback = function() {
+	document.querySelectorAll('[class*="Blur"]').forEach(function(el){
+		for(var i = 0; i < el.classList.length; i++) {
+			if(el.classList[i].startsWith('Blur')){
+				el.classList.remove(el.classList[i]);
+				break;
+			}
+		}
+	});
+};
+
+const observer = new MutationObserver(callback);
+observer.observe(targetNode, config);
