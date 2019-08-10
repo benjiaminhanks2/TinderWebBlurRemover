@@ -1,15 +1,23 @@
-const targetNode = document;
-const config = { attributes: true, childList: true, subtree: true };
-const callback = function() {
-	document.querySelectorAll('[class*="Blur"]').forEach(function(el){
-		for(var i = 0; i < el.classList.length; i++) {
-			if(el.classList[i].startsWith('Blur')){
-				el.classList.remove(el.classList[i]);
-				break;
-			}
-		}
-	});
-};
+// ==UserScript==
+// @name         TinderWeb Blur Remover
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @author       You
+// @match        https://tinder.com/app/recs
+// @grant        none
+// @run-at       context-menu
+// ==/UserScript==
 
-const observer = new MutationObserver(callback);
-observer.observe(targetNode, config);
+
+(function() {
+    'use strict';
+document.querySelectorAll('[class*="Blur"]').forEach(function(el){
+	for(var i = 0; i < el.classList.length; i++) {
+		if(el.classList[i].startsWith('Blur')){
+			el.classList.remove(el.classList[i]);
+			break;
+		}
+	}
+});
+})();
+
