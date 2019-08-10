@@ -5,19 +5,28 @@
 // @author       You
 // @match        https://tinder.com/app/recs
 // @grant        none
-// @run-at       context-menu
+
 // ==/UserScript==
 
 
 (function() {
     'use strict';
-document.querySelectorAll('[class*="Blur"]').forEach(function(el){
-	for(var i = 0; i < el.classList.length; i++) {
-		if(el.classList[i].startsWith('Blur')){
-			el.classList.remove(el.classList[i]);
-			break;
-		}
-	}
-});
-})();
+    var unblur = function() {
+        document.querySelectorAll('[class*="Blur"]').forEach(function(el){
+            for(var i = 0; i < el.classList.length; i++) {
+                if(el.classList[i].startsWith('Blur')){
+                    el.classList.remove(el.classList[i]);
+                    break;
+                }
+            }
+        });
+    }
 
+    unblur();
+
+    const targetNode = document.getElementsByTagName('body')[0];
+    const config = { attributes: true, childList: true, subtree: true };
+
+    const observer = new MutationObserver(unblur);
+    observer.observe(targetNode, config);
+})();
