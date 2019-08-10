@@ -5,7 +5,7 @@
 // @author       You
 // @match        https://tinder.com/app/recs
 // @grant        none
-
+// @run-at       context-menu
 // ==/UserScript==
 
 
@@ -30,3 +30,4 @@
     const observer = new MutationObserver(unblur);
     observer.observe(targetNode, config);
 })();
+
