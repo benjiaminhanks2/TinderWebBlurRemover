@@ -5,13 +5,13 @@
 // @author       You
 // @match        https://tinder.com/app/recs
 // @grant        none
-// @run-at       context-menu
 // ==/UserScript==
 
+var unblur;
 
 (function() {
     'use strict';
-    var unblur = function() {
+    unblur = function() {
         document.querySelectorAll('[class*="Blur"]').forEach(function(el){
             for(var i = 0; i < el.classList.length; i++) {
                 if(el.classList[i].startsWith('Blur')){
